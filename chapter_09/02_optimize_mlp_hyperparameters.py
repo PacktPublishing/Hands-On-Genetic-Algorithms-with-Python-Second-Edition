@@ -10,12 +10,12 @@ import elitism
 
 # boundaries for all parameters:
 # 'hidden_layer_sizes': first four values
-# 'activation': ['tanh', 'relu', 'logistic'] -> 0, 1, 2
+# 'activation': ['tanh', 'relu', 'logistic', 'identity'] -> 0, 1, 2
 # 'solver': ['sgd', 'adam', 'lbfgs'] -> 0, 1, 2
 # 'alpha': float in the range of [0.0001, 2.0],
 # 'learning_rate': ['constant', 'invscaling', 'adaptive'] -> 0, 1, 2
 BOUNDS_LOW =  [ 5,  -5, -10, -20, 0,     0,     0.0001, 0    ]
-BOUNDS_HIGH = [15,  10,  10,  10, 2.999, 2.999, 2.0,    2.999]
+BOUNDS_HIGH = [15,  10,  10,  10, 3.999, 2.999, 2.0,    2.999]
 
 NUM_OF_PARAMS = len(BOUNDS_HIGH)
 
@@ -24,7 +24,7 @@ POPULATION_SIZE = 20
 P_CROSSOVER = 0.9  # probability for crossover
 P_MUTATION = 0.5   # probability for mutating an individual
 MAX_GENERATIONS = 5
-HALL_OF_FAME_SIZE = 3
+HALL_OF_FAME_SIZE = 5
 CROWDING_FACTOR = 10.0  # crowding factor for crossover and mutation
 
 # set the random seed:

@@ -15,7 +15,7 @@ class MlpHyperparametersTest:
 
         self.randomSeed = randomSeed
         self.initDataset()
-        self.kfold = model_selection.KFold(n_splits=self.NUM_FOLDS, random_state=self.randomSeed)
+        self.kfold = model_selection.KFold(n_splits=self.NUM_FOLDS)
 
     def initDataset(self):
         self.data = datasets.load_iris()
@@ -26,7 +26,7 @@ class MlpHyperparametersTest:
 
     # params contains floats representing the following:
     # 'hidden_layer_sizes': up to 4 positive integers
-    # 'activation': {'tanh', 'relu', 'logistic'},
+    # 'activation': {'tanh', 'relu', 'logistic', 'identity'},
     # 'solver': {'sgd', 'adam', 'lbfgs'},
     # 'alpha': float,
     # 'learning_rate': {'constant', 'invscaling', 'adaptive'}
@@ -42,7 +42,7 @@ class MlpHyperparametersTest:
         else:
             hiddenLayerSizes = (round(params[0]), round(params[1]), round(params[2]), round(params[3]))
 
-        activation = ['tanh', 'relu', 'logistic'][floor(params[4])]
+        activation = ['tanh', 'relu', 'logistic', 'identity'][floor(params[4])]
         solver = ['sgd', 'adam', 'lbfgs'][floor(params[5])]
         alpha = params[6]
         learning_rate = ['constant', 'invscaling', 'adaptive'][floor(params[7])]
