@@ -7,7 +7,7 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
 
 from pandas import read_csv
-from sklearn_deap.evolutionary_search.cv import EvolutionaryAlgorithmSearchCV
+from ..sklearn_deap.evolutionary_search.cv import EvolutionaryAlgorithmSearchCV
 
 
 class HyperparameterTuningGrid:
@@ -94,6 +94,7 @@ def main():
     print(test.classifier.get_params())
     print("score with default values = ", test.getDefaultAccuracy())
 
+    """
     print()
     start = time.time()
     test.gridTest()
@@ -106,7 +107,7 @@ def main():
     test.geneticGridTest()
     end = time.time()
     print("Time Elapsed = ", end - start)
-    """
+    #"""
 
 
 if __name__ == "__main__":

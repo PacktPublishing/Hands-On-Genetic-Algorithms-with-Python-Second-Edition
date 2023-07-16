@@ -5,22 +5,12 @@ from deap import tools
 import random
 import numpy
 
-import mlp_hyperparameters_test
+import cart_pole
 import elitism
 
-# boundaries for all parameters:
-# 'hidden_layer_sizes': first four values
-# 'activation': ['tanh', 'relu', 'logistic', 'identity'] -> 0, 1, 2
-# 'solver': ['sgd', 'adam', 'lbfgs'] -> 0, 1, 2
-# 'alpha': float in the range of [0.0001, 2.0],
-# 'learning_rate': ['constant', 'invscaling', 'adaptive'] -> 0, 1, 2
-BOUNDS_LOW =  [ 5,  -5, -10, -20, 0,     0,     0.0001, 0    ]
-BOUNDS_HIGH = [15,  10,  10,  10, 3.999, 2.999, 2.0,    2.999]
-
-NUM_OF_PARAMS = len(BOUNDS_HIGH)
 
 # Genetic Algorithm constants:
-POPULATION_SIZE = 20
+POPULATION_SIZE = 30
 P_CROSSOVER = 0.9  # probability for crossover
 P_MUTATION = 0.5   # probability for mutating an individual
 MAX_GENERATIONS = 10
@@ -31,8 +21,13 @@ CROWDING_FACTOR = 10.0  # crowding factor for crossover and mutation
 RANDOM_SEED = 42
 random.seed(RANDOM_SEED)
 
-# create the classifier accuracy test class:
-test = mlp_hyperparameters_test.MlpHyperparametersTest(RANDOM_SEED)
+# create the cart pole task class:
+cartPole = cart_pole.CartPole(RANDOM_SEED)
+NUM_OF_PARAMS = len(cartPole)
+# boundaries for layer size parameters:
+
+# weight and bias values are bound between -1 and 1:
+BOUNDS_LOW, BOUNDS_HIGH = -1.0, 1.0  # boundaries for all dimensions
 
 toolbox = base.Toolbox()
 
@@ -42,41 +37,34 @@ creator.create("FitnessMax", base.Fitness, weights=(1.0,))
 # create the Individual class based on list:
 creator.create("Individual", list, fitness=creator.FitnessMax)
 
-# define the layer size attributes individually:
-for i in range(NUM_OF_PARAMS):
-    # "attribute_0", "attribute_1", ...
-    toolbox.register("attribute_" + str(i),
-                     random.uniform,
-                     BOUNDS_LOW[i],
-                     BOUNDS_HIGH[i])
+# helper function for creating random real numbers uniformly distributed within a given range [low, up]
+# it assumes that the range is the same for every dimension
+def randomFloat(low, up):
+    return [random.uniform(l, u) for l, u in zip([low] * NUM_OF_PARAMS, [up] * NUM_OF_PARAMS)]
 
-# create a tuple containing an attribute generator for each param searched:
-attributes = ()
-for i in range(NUM_OF_PARAMS):
-    attributes = attributes + (toolbox.__getattribute__("attribute_" + str(i)),)
+# create an operator that randomly returns a float in the desired range:
+toolbox.register("attrFloat", randomFloat, BOUNDS_LOW, BOUNDS_HIGH)
 
-# create the individual operator to fill up an Individual instance:
+# create an operator that fills up an Individual instance:
 toolbox.register("individualCreator",
-                 tools.initCycle,
+                 tools.initIterate,
                  creator.Individual,
-                 attributes,
-                 n=1)
+                 toolbox.attrFloat)
 
-# create the population operator to generate a list of individuals:
+# create an operator that generates a list of individuals:
 toolbox.register("populationCreator",
                  tools.initRepeat,
                  list,
                  toolbox.individualCreator)
 
 
-# fitness calculation
-def classificationAccuracy(individual):
-    return test.getAccuracy(individual),
+# fitness calculation using the CrtPole class:
+def score(individual):
+    return cartPole.getScore(individual),
 
 
-toolbox.register("evaluate", classificationAccuracy)
+toolbox.register("evaluate", score)
 
-# genetic operators:mutFlipBit
 
 # genetic operators:
 toolbox.register("select", tools.selTournament, tournsize=2)
@@ -120,11 +108,22 @@ def main():
                                                       verbose=True)
 
     # print best solution found:
-    print("- Best solution is: \n",
-          test.formatParams(hof.items[0]),
-          "\n => accuracy = ",
-          hof.items[0].fitness.values[0])
+    best = hof.items[0]
+    print()
+    print("Best Solution = ", best)
+    print("Best Score = ", best.fitness.values[0])
+    print()
 
+    # save best solution for a replay:
+    cartPole.saveParams(best)
+
+    # find average score of 100 episodes using the best solution found:
+    print("Running 100 episodes using the best solution...")
+    scores = []
+    for test in range(100):
+        scores.append(cart_pole.CartPole().getScore(best))
+    print("scores = ", scores)
+    print("Avg. score = ", sum(scores) / len(scores))
 
 
 if __name__ == "__main__":

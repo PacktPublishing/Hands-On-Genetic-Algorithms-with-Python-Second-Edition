@@ -34,6 +34,8 @@ class TravelingSalesmanProblem:
         self.distances = []
         self.tspSize = 0
 
+        self.data_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "tsp-data")
+
         # initialize the data:
         self.__initData()
 
@@ -50,8 +52,8 @@ class TravelingSalesmanProblem:
 
         # attempt to read serialized data:
         try:
-            self.locations = pickle.load(open(os.path.join("tsp-data", f"{self.name}-loc.pickle"), "rb"))
-            self.distances = pickle.load(open(os.path.join("tsp-data", f"{self.name}-dist.pickle"), "rb"))
+            self.locations = pickle.load(open(os.path.join(self.data_path, f"{self.name}-loc.pickle"), "rb"))
+            self.distances = pickle.load(open(os.path.join(self.data_path, f"{self.name}-dist.pickle"), "rb"))
         except (OSError, IOError):
             pass
 
@@ -70,10 +72,7 @@ class TravelingSalesmanProblem:
         self.locations = []
 
         # open whitespace-delimited file from url and read lines from it:
-        #with urlopen("http://elib.zib.de/pub/mp-testdata/tsp/tsplib/tsp/" + self.name + ".tsp") as f:
-        #with urlopen(f"http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp/{self.name}.tsp.gz") as f:
-        with open(os.path.join("tsp-data", f"{self.name}.tsp")) as f:
-            #reader = csv.reader(codecs.iterdecode(f, 'utf-8'), delimiter=" ", skipinitialspace=True)
+        with open(os.path.join(self.data_path, f"{self.name}.tsp")) as f:
             reader = csv.reader(f, delimiter=' ', skipinitialspace=True)
 
             # skip lines until one of these lines is found:
@@ -111,10 +110,8 @@ class TravelingSalesmanProblem:
                     print("{}, {}: location1 = {}, location2 = {} => distance = {}".format(i, j, self.locations[i], self.locations[j], distance))
 
             # serialize locations and distances:
-            if not os.path.exists("tsp-data"):
-                os.makedirs("tsp-data")
-            pickle.dump(self.locations, open(os.path.join("tsp-data", self.name + "-loc.pickle"), "wb"))
-            pickle.dump(self.distances, open(os.path.join("tsp-data", self.name + "-dist.pickle"), "wb"))
+            pickle.dump(self.locations, open(os.path.join(self.data_path, f"{self.name}-loc.pickle"), "wb"))
+            pickle.dump(self.distances, open(os.path.join(self.data_path, f"{self.name}-dist.pickle"), "wb"))
 
     def getTotalDistance(self, indices):
         """Calculates the total distance of the path described by the given indices of the cities
