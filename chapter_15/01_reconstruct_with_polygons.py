@@ -15,7 +15,7 @@ import seaborn as sns
 # problem related constants
 POLYGON_SIZE = 3
 NUM_OF_POLYGONS = 100
-METRIC = "SSIM"  # "MSE"
+METRIC = "MSE"  #"SSIM"
 
 # calculate total number of params in chromosome:
 # For each polygon we have:
@@ -27,7 +27,7 @@ POPULATION_SIZE = 200
 P_CROSSOVER = 0.9  # probability for crossover
 P_MUTATION = 0.5   # probability for mutating an individual
 MAX_GENERATIONS = 5000
-HALL_OF_FAME_SIZE = 20
+HALL_OF_FAME_SIZE = 10
 CROWDING_FACTOR = 10.0  # crowding factor for crossover and mutation
 
 # set the random seed:
