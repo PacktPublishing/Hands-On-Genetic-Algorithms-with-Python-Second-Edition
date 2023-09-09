@@ -41,9 +41,7 @@ toolbox = base.Toolbox()
 
 # calculate the truth table of even parity check:
 parityIn = list(itertools.product([0, 1], repeat=NUM_INPUTS))
-parityOut = []
-for row in parityIn:
-    parityOut.append(sum(row) % 2)
+parityOut = [sum(row) % 2 for row in parityIn]
 
 # create the primitive set:
 primitiveSet = gp.PrimitiveSet("main", NUM_INPUTS, "in_")
