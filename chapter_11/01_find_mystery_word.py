@@ -8,7 +8,7 @@ from deap import tools
 
 from mystery_word_game import MysteryWordGame
 from embeddings import Embeddings
-from elitism import eaSimple_modified
+from elitism_modified import eaSimple_modified
 
 # Genetic Algorithm constants:
 POPULATION_SIZE = 30 
@@ -23,10 +23,12 @@ MAX_SCORE = 100         # max possible score in the game
 RANDOM_SEED = 42
 random.seed(RANDOM_SEED)
 
-# create the game runner class:
-game = MysteryWordGame(given_mystery_word='dog')
-embeddings = Embeddings(randomSeed=RANDOM_SEED)
+# create the embedding model:
+embeddings = Embeddings(model_name='glove-wiki-gigaword-50', randomSeed=RANDOM_SEED)
 VECTOR_SIZE = embeddings.get_vector_size()
+
+# create a game instance:
+game = MysteryWordGame(given_mystery_word='dog')
 
 # boundaries for vector entries:
 BOUNDS_LOW, BOUNDS_HIGH = -1.0, 1.0  # boundaries for all dimensions
