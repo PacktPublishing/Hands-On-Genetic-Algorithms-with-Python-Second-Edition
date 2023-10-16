@@ -1,15 +1,12 @@
 from deap import tools
 from deap import algorithms
 
-import numpy as np
-
-def eaSimple_modified(embeddings, population, toolbox, cxpb, mutpb, ngen, 
-                        max_fitness = None, stats=None, halloffame=None, verbose=__debug__):
-    """
-    This algorithm is based on the DEAP eaSimple() algorithm, with the following modifications:
-    - The halloffame is used to implement an elitism mechanism
-    - The best individual in each generation is converted to a word and printed out
-    - The main loop will break early if the value max_fitness is reached
+def eaSimpleWithElitism(population, toolbox, cxpb, mutpb, ngen, stats=None,
+             halloffame=None, verbose=__debug__):
+    """This algorithm is similar to DEAP eaSimple() algorithm, with the modification that
+    halloffame is used to implement an elitism mechanism. The individuals contained in the
+    halloffame are directly injected into the next generation and are not subject to the
+    genetic operators of selection, crossover and mutation.
     """
     logbook = tools.Logbook()
     logbook.header = ['gen', 'nevals'] + (stats.fields if stats else [])
@@ -29,7 +26,7 @@ def eaSimple_modified(embeddings, population, toolbox, cxpb, mutpb, ngen,
     record = stats.compile(population) if stats else {}
     logbook.record(gen=0, nevals=len(invalid_ind), **record)
     if verbose:
-        print(f"{logbook.stream} => {embeddings.vec2_nearest_word(np.asarray(halloffame.items[0]))}")
+        print(logbook.stream)
 
     # Begin the generational process
     for gen in range(1, ngen + 1):
@@ -59,10 +56,7 @@ def eaSimple_modified(embeddings, population, toolbox, cxpb, mutpb, ngen,
         record = stats.compile(population) if stats else {}
         logbook.record(gen=gen, nevals=len(invalid_ind), **record)
         if verbose:
-            print(f"{logbook.stream} => {embeddings.vec2_nearest_word(np.asarray(halloffame.items[0]))}")
-
-        if max_fitness and halloffame.items[0].fitness.values[0] >= max_fitness:
-            break
+            print(logbook.stream)
 
     return population, logbook
 
