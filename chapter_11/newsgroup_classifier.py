@@ -24,14 +24,11 @@ class NewsgroupClassifier:
         newsgroups_train = fetch_20newsgroups(subset='train', categories=categories, remove=remove, shuffle=False)
         newsgroups_test = fetch_20newsgroups(subset='test', categories=categories, remove=remove, shuffle=False)
 
-        """
         word_vectorizer = TfidfVectorizer(analyzer='word', sublinear_tf=True, max_df=0.5, min_df=5, stop_words="english",
                                           ngram_range=(1, 3))
         char_vectorizer = TfidfVectorizer(analyzer='char', sublinear_tf=True, max_df=0.5, min_df=5, ngram_range=(2, 5))
         vectorizer = FeatureUnion([('word_vectorizer', word_vectorizer), ('char_vectorizer', char_vectorizer)])
-        """
-        vectorizer = TfidfVectorizer(analyzer='word', sublinear_tf=True, max_df=0.5, min_df=5, stop_words="english",
-                                          ngram_range=(1, 3))
+        #vectorizer = TfidfVectorizer(analyzer='word', sublinear_tf=True, max_df=0.5, min_df=5, stop_words="english", ngram_range=(1, 3))
     
         self.X_train = vectorizer.fit_transform(newsgroups_train.data)
         self.y_train = newsgroups_train.target
