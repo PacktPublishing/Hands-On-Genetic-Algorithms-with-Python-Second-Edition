@@ -163,4 +163,7 @@ cython_debug/
 #.idea/
 
 # others
+*.bin
+.vscode/
 images/
+old-stuff/
