@@ -24,11 +24,11 @@ def main():
     
     game = MysteryWordGame(given_mystery_word="dog")
 
-    print("-- Checking candidate guess words:")
+    print("-- Checking candidate guess words for 'dog':")
 
-    for guess_word in ["canine", "hound", "poodle", "puppy", "cat", "dog"]:
+    for guess_word in ["computer", "asdghf", "canine", "hound", "poodle", "puppy", "cat", "dog"]:
         score = game.score_guess(guess_word)
-        print(f"- current guess: {guess_word.ljust(6)} => score = {score:.2f}")
+        print(f"- current guess: {guess_word.ljust(10)} => score = {score:.2f}")
 
 if __name__ == '__main__':
     main()
