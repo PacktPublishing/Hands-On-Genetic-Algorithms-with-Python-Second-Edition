@@ -16,11 +16,11 @@ async def eaSimpleWithElitism(population, toolbox, cxpb, mutpb, ngen, stats=None
     # Evaluate the individuals with an invalid fitness
     invalid_ind = [ind for ind in population if not ind.fitness.valid]
 
-    connector = aiohttp.TCPConnector(limit=20) #TODO
+    connector = aiohttp.TCPConnector(limit=100)
 
     async with aiohttp.ClientSession(connector=connector) as session:  
-        tasks = [asyncio.ensure_future(toolbox.evaluate(session, ind)) for ind in invalid_ind]  
-        fitnesses = await asyncio.gather(*tasks)
+        evaluation_tasks = [asyncio.ensure_future(toolbox.evaluate(session, ind)) for ind in invalid_ind]  
+        fitnesses = await asyncio.gather(*evaluation_tasks)
 
         for ind, fit in zip(invalid_ind, fitnesses):
             ind.fitness.values = fit

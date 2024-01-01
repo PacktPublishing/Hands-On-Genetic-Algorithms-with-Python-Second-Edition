@@ -1,7 +1,6 @@
 from deap import base
 from deap import creator
 from deap import tools
-from deap import algorithms
 import elitism_async
 
 import random
@@ -20,7 +19,7 @@ P_MUTATION = 0.1   # probability for mutating an individual
 MAX_GENERATIONS = 5
 HALL_OF_FAME_SIZE = 3
 
-BASE_URL="http://127.0.0.1:5000/"
+BASE_URL="http://127.0.0.1:5000"
 
 # set the random seed:
 RANDOM_SEED = 42
@@ -48,10 +47,14 @@ toolbox.register("populationCreator", tools.initRepeat, list, toolbox.individual
 async def async_oneMaxFitness_client(session, individual):
     individual_as_str = ''.join(str(bit) for bit in individual)
     url = f'{BASE_URL}/one_max_fitness/{individual_as_str}'
-    async with session.get(url) as resp:
-        sum_digits_str = await resp.text()
-        return int(sum_digits_str),  # return a tuple
-    
+    async with session.get(url) as response:
+        if response.ok:
+            sum_digits_str = await response.text()
+            return int(sum_digits_str),  # return a tuple
+        else:
+            status = response.status
+            raise RuntimeError(f'HTTP request failed with status code {response.status}')
+            
 toolbox.register("evaluate", async_oneMaxFitness_client)
 
 # Tournament selection with tournament size of 4:

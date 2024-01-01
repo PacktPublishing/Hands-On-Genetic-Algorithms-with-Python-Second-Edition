@@ -1,7 +1,8 @@
 from deap import base
 from deap import creator
 from deap import tools
-from deap import algorithms
+
+import elitism
 
 import random
 import numpy
@@ -19,7 +20,7 @@ P_MUTATION = 0.1   # probability for mutating an individual
 MAX_GENERATIONS = 5
 HALL_OF_FAME_SIZE = 3
 
-BASE_URL="http://127.0.0.1:5000/"
+BASE_URL="http://127.0.0.1:5000"
 
 # set the random seed:
 RANDOM_SEED = 42
@@ -47,8 +48,10 @@ toolbox.register("populationCreator", tools.initRepeat, list, toolbox.individual
 def oneMaxFitness_client(individual):
     individual_as_str = ''.join(str(bit) for bit in individual)
     response = urlopen(f'{BASE_URL}/one_max_fitness/{individual_as_str}')
+    
     if response.status != 200:
-        print("Exception!")
+        raise RuntimeError(f'HTTP request failed with status code {response.status}')
+    
     sum_digits_str = response.read().decode('utf-8')
     return int(sum_digits_str),  # return a tuple
 
@@ -80,8 +83,8 @@ def main():
     hof = tools.HallOfFame(HALL_OF_FAME_SIZE)
 
     # perform the Genetic Algorithm flow with hof feature added:
-    population, _ = algorithms.eaSimple(population, toolbox, cxpb=P_CROSSOVER, mutpb=P_MUTATION,
-                                              ngen=MAX_GENERATIONS, stats=stats, halloffame=hof, verbose=True)
+    population, _ = elitism.eaSimpleWithElitism(population, toolbox, cxpb=P_CROSSOVER, mutpb=P_MUTATION,
+                                                ngen=MAX_GENERATIONS, stats=stats, halloffame=hof, verbose=True)
 
     print("Best Individual = ", hof.items[0])
 

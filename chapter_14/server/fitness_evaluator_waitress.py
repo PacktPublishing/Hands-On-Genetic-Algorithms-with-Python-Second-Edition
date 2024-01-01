@@ -1,6 +1,7 @@
 import time
 
 from flask import Flask
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -22,3 +23,6 @@ def oneMaxFitness(individual_as_string):
     busy_wait(DELAY_SECONDS)
     individual = [int(char) for char in individual_as_string]
     return str(sum(individual)) # return an str(int)
+
+if __name__ == "__main__":
+    serve(app, host='0.0.0.0', port=5000, threads=20)
