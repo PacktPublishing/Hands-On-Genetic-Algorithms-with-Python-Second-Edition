@@ -16,7 +16,7 @@ import multiprocessing
 
 # problem related constants
 POLYGON_SIZE = 3
-NUM_OF_POLYGONS = 100 #20 #15 
+NUM_OF_POLYGONS = 20 # 15
 
 # calculate total number of params in chromosome:
 # For each polygon we have:
@@ -37,7 +37,7 @@ random.seed(RANDOM_SEED)
 
 BASE_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images")
 MONA_LISA_PATH = os.path.join(BASE_PATH, "Mona_Lisa_head.png")
-RESULTS_PATH = os.path.join(BASE_PATH, "results", f"run-{POLYGON_SIZE}-{NUM_OF_POLYGONS}")
+RESULTS_PATH = os.path.join(BASE_PATH, "results", "blur", f"run-{POLYGON_SIZE}-{NUM_OF_POLYGONS}")
 
 # create the image test class instance:
 imageTest = image_test.ImageTest(MONA_LISA_PATH, POLYGON_SIZE)
@@ -81,7 +81,7 @@ toolbox.register("populationCreator",
 
 # fitness calculation using the current difference metric:
 def getDiff(individual):
-    return imageTest.getDifference(individual),
+    return imageTest.getDifference(individual, blur=True),
 
 toolbox.register("evaluate", getDiff)
 

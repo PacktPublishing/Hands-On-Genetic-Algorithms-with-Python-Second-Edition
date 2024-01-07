@@ -1,11 +1,9 @@
 from PIL import Image, ImageDraw
 import numpy as np
-from skimage.metrics import structural_similarity
 import cv2
 import matplotlib.pyplot as plt
 
-MAX_STEPS = 200
-FLAG_LOCATION = 0.5
+BLUR_KERNEL_SIZE = 15
 
 class ImageTest:
 
@@ -31,7 +29,7 @@ class ImageTest:
         """
 
         # start with a new image:
-        image = Image.new('RGB', (self.width, self.height))#TODO
+        image = Image.new('RGB', (self.width, self.height))
         draw = ImageDraw.Draw(image, 'RGBA')
 
         # divide the polygonData to chunks, each containing the data for a single polygon:
@@ -62,7 +60,7 @@ class ImageTest:
 
         return image
 
-    def getDifference(self, polygonData, method="MSE"):
+    def getDifference(self, polygonData, blur=False):
         """
         accepts polygon data, creates an image containing these polygons, and calculates the difference
         between this image and the reference image using one of two methods.
@@ -76,10 +74,10 @@ class ImageTest:
         # create the image containing the polygons:
         image = self.polygonDataToImage(polygonData)
 
-        if method == "MSE":
-            return self.getMse(image)
+        if blur:
+            return self.getMseBlur(image)
         else:
-            return 1.0 - self.getSsim(image)
+            return self.getMse(image)
 
     def plotImages(self, image, header=None):
         """
@@ -93,12 +91,17 @@ class ImageTest:
             plt.suptitle(header)
 
         # plot the reference image on the left:
-        ax = fig.add_subplot(1, 2, 1)
+        ax = fig.add_subplot(1, 3, 1)
         plt.imshow(self.refImage)
         self.ticksOff(plt)
 
+        # plot the blurred image on the middle:
+        ax = fig.add_subplot(1, 3, 2)
+        plt.imshow(self.fromCv2(self.blur(image)))
+        self.ticksOff(plt)
+
         # plot the given image on the right:
-        fig.add_subplot(1, 2, 2)
+        fig.add_subplot(1, 3, 3)
         plt.imshow(image)
         self.ticksOff(plt)
 
@@ -129,14 +132,20 @@ class ImageTest:
     def toCv2(self, pil_image):
         """converts the given Pillow image to CV2 format"""
         return cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
+    
+    def fromCv2(self, cv2_image):
+        """converts the given Pillow image to CV2 format"""
+        return Image.fromarray(cv2.cvtColor(cv2_image, cv2.COLOR_BGR2RGB))
+
+    def blur(self, image):
+        return cv2.GaussianBlur(self.toCv2(image), (BLUR_KERNEL_SIZE, BLUR_KERNEL_SIZE), cv2.BORDER_DEFAULT)
 
     def getMse(self, image):
         """calculates MSE of difference between the given image and the reference image"""
         return np.sum((self.toCv2(image).astype("float") - self.refImageCv2.astype("float")) ** 2)/float(self.numPixels)
 
-    def getSsim(self, image):
-        """calculates mean structural similarity index between the given image and the reference image"""
-        return structural_similarity(self.toCv2(image), self.refImageCv2, channel_axis=2)
+    def getMseBlur(self, image):
+        return np.sum((self.blur(image).astype("float") - self.refImageCv2.astype("float")) ** 2)/float(self.numPixels)
 
     def list2Chunks(self, list, chunkSize):
         """divides a given list to fixed size chunks, returns a generator iterator"""
