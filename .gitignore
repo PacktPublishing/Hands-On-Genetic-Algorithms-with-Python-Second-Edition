@@ -164,6 +164,7 @@ cython_debug/
 
 # others
 *.bin
+*.joblib
 .vscode/
 images/
 old-stuff/
