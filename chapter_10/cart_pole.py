@@ -102,6 +102,7 @@ class CartPole:
         for param in netParams:
             savedParams.append(param)
 
+        os.makedirs(os.path.dirname(DATA_FILE_PATH), exist_ok=True)
         pickle.dump(savedParams, open(DATA_FILE_PATH, "wb"))
         
 

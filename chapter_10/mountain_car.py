@@ -65,6 +65,7 @@ class MountainCar:
         for action in actions:
             savedActions.append(action)
 
+        os.makedirs(os.path.dirname(DATA_FILE_PATH), exist_ok=True)
         pickle.dump(savedActions, open(DATA_FILE_PATH, "wb"))
 
     def replaySavedActions(self):
