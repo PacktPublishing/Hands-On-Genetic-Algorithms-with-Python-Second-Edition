@@ -88,6 +88,7 @@ def main():
     plt.xlabel('Generation')
     plt.ylabel('Max / Average Fitness')
     plt.title('Max and Average Fitness over Generations')
+
     plt.show()
 
 
