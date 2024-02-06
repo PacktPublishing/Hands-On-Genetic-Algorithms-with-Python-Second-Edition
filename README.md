@@ -19,8 +19,8 @@ python -m venv venv
 ```
 Activate the virtual environment using the appropriate command for your operating system:
 
-- **Windows:*- `venv\Scripts\activate`
-- **macOS and Linux:*- `source venv/bin/activate`
+- **Windows:**- `venv\Scripts\activate`
+- **macOS and Linux:**- `source venv/bin/activate`
 
 After activation, install the dependencies with:
 ```bash
@@ -102,6 +102,9 @@ Restructure the genetic algorithm into a **client-server model**, where the clie
 ### Server side
 - `chapter_14/server/fitness_evaluator.py`: Implement the server part of the genetic algorithm as a Flask application.
 - `chapter_14/server/fitness_evaluator_waitress.py`: Implement the server part of the genetic algorithm as a Flask application within a standalone `Waitress` server.
+- 
+#### Server Environment
+To use the server files, it is necessary to create a separate virtual environment. The dependencies required for this environment are listed in the file `chapter_14/server/requirements-server.txt`.
 
 ## Chapter 15: Evolutionary Image Reconstruction with Genetic Algorithms 
 Experiment with image processing and create a reconstruction of the Mona Lisa with a set of semi-transparent polygons. 
