@@ -120,7 +120,7 @@ def main():
         meanFitness = sum(fitnessValues) / len(population)
         maxFitnessValues.append(maxFitness)
         meanFitnessValues.append(meanFitness)
-        print("- Generation {}: Max Fitness = {}, Avg Fitness = {}".format(generationCounter, maxFitness, meanFitness))
+        print(f"- Generation {generationCounter}: Max Fitness = {maxFitness}, Avg Fitness = {meanFitness}")
 
         # find and print best individual:
         best_index = fitnessValues.index(max(fitnessValues))

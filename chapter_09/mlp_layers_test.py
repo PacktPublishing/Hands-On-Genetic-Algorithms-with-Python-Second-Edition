@@ -53,4 +53,4 @@ class MlpLayersTest:
         return cv_results.mean()
 
     def formatParams(self, params):
-        return "'hidden_layer_sizes'={}".format(self.convertParams(params))
+        return f"'hidden_layer_sizes'={self.convertParams(params)}"

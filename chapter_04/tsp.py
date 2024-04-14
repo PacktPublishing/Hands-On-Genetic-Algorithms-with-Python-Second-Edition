@@ -95,7 +95,7 @@ class TravelingSalesmanProblem:
             self.tspSize = len(self.locations)
 
             # print data:
-            print("length = {}, locations = {}".format(self.tspSize, self.locations))
+            print(f"length = {self.tspSize}, locations = {self.locations}")
 
             # initialize distance matrix by filling it with 0's:
             self.distances = [[0] * self.tspSize for _ in range(self.tspSize)]
@@ -107,7 +107,7 @@ class TravelingSalesmanProblem:
                     distance = np.linalg.norm(self.locations[j] - self.locations[i])
                     self.distances[i][j] = distance
                     self.distances[j][i] = distance
-                    print("{}, {}: location1 = {}, location2 = {} => distance = {}".format(i, j, self.locations[i], self.locations[j], distance))
+                    print(f"{i}, {j}: location1 = {self.locations[i]}, location2 = {self.locations[j]} => distance = {distance}")
 
             # serialize locations and distances:
             pickle.dump(self.locations, open(os.path.join(self.data_path, f"{self.name}-loc.pickle"), "wb"))

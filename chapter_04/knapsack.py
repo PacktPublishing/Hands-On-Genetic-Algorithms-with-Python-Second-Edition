@@ -78,8 +78,8 @@ class Knapsack01Problem:
                 if zeroOneList[i] > 0:
                     totalWeight += weight
                     totalValue += value
-                    print("- Adding {}: weight = {}, value = {}, accumulated weight = {}, accumulated value = {}".format(item, weight, value, totalWeight, totalValue))
-        print("- Total weight = {}, Total value = {}".format(totalWeight, totalValue))
+                    print(f" - Adding {item}: weight = {weight}, value = {value}, accumulated weight = {totalWeight}, accumulated value = {totalValue}")
+        print(f"- Total weight = {totalWeight}, Total value = {totalValue}")
 
 
 # testing the class:
