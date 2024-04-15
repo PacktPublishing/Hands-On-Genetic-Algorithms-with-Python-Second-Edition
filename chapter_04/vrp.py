@@ -161,6 +161,10 @@ class VehicleRoutingProblem:
 
 
 def main():
+    # set the random seed:
+    RANDOM_SEED = 42
+    random.seed(RANDOM_SEED)
+
     # create a problem instance:
     vrp = VehicleRoutingProblem("bayg29", 3, 12)
 
