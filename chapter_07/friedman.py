@@ -78,7 +78,7 @@ def main():
     for n in range(1, len(test) + 1):
         nFirstFeatures = [1] * n + [0] * (len(test) - n)
         score = test.getMSE(nFirstFeatures)
-        print("%d first features: score = %f" % (n, score))
+        print(f"{n} first features: score = {score}")
         scores.append(score)
 
     # plot graph:

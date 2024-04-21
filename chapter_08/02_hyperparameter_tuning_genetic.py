@@ -119,7 +119,7 @@ def main():
     # print best solution found:
     print("- Best solution is: ")
     print("params = ", test.formatParams(hof.items[0]))
-    print("Accuracy = %1.5f" % hof.items[0].fitness.values[0])
+    print(f"Accuracy = {hof.items[0].fitness.values[0]:1.5f}")
 
     # extract statistics:
     maxFitnessValues, meanFitnessValues = logbook.select("max", "avg")

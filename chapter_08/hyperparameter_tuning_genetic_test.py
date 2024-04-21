@@ -47,4 +47,6 @@ class HyperparameterTuningGenetic:
         return cv_results.mean()
 
     def formatParams(self, params):
-        return "'n_estimators'=%3d, 'learning_rate'=%1.3f, 'algorithm'=%s" % (self.convertParams(params))
+        n_estimators, learning_rate, algorithm = self.convertParams(params)
+        return f"'n_estimators'={n_estimators:3d}, 'learning_rate'={learning_rate:1.3f}, 'algorithm'={algorithm}"
+
