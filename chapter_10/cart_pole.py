@@ -111,7 +111,9 @@ class CartPole:
         """
         deserializes a saved list of network parameters and uses it to replay an episode
         """
-        savedParams = pickle.load(open(DATA_FILE_PATH, "rb"))
+        with open(DATA_FILE_PATH, "rb") as file:
+            savedParams = pickle.load(file)
+            
         self.replay(savedParams)
 
     def replay(self, netParams):

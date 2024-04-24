@@ -72,7 +72,9 @@ class MountainCar:
         """
         deserializes a saved list of actions and replays it
         """
-        savedActions = pickle.load(open(DATA_FILE_PATH, "rb"))
+        with open(DATA_FILE_PATH, "rb") as file:
+            savedActions = pickle.load(file)
+            
         self.replay(savedActions)
 
     def replay(self, actions):
