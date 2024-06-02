@@ -11,30 +11,26 @@ Hands-On Genetic Algorithms with Python, Second Edition, published by Packt
 
 
 ### Virtual Environment
-
+#### Creation
 It is recommended to install the required dependencies within a **virtual environment**. To create one, follow these steps:
 ```bash
 cd path/to/repository
 python -m venv venv
 ```
 
----
-**NOTE:**
-If you have more than one version of Python installed in your system, you can choose the version that will be used in the virual environment when creating it. For example, use 
-```bash
-py -3.12 -m venv venv
-```
-for Windows, or
-```bash
-python3.12 -m venv venv
-```
-for Mac.
----
+> **NOTE:** 
+If you have more than one version of Python installed in your system, you can specify the version to be used in the virual environment when creating it:
+> - **Windows:** `py -3.12 -m venv venv`
+> - **macOS and Linux:** `python3.12 -m venv venv`
 
+
+#### Activation
 Activate the virtual environment using the appropriate command for your operating system:
 
 - **Windows:** `venv\Scripts\activate`
 - **macOS and Linux:** `source venv/bin/activate`
+
+#### Installing dependencies
 
 After activation, install the dependencies with:
 ```bash
