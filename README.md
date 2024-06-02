@@ -17,7 +17,9 @@ It is recommended to install the required dependencies within a **virtual enviro
 cd path/to/repository
 python -m venv venv
 ```
-**_NOTE:_**
+
+---
+**NOTE:**
 If you have more than one version of Python installed in your system, you can choose the version that will be used in the virual environment when creating it. For example, use 
 ```bash
 py -3.12 -m venv venv
@@ -27,6 +29,7 @@ for Windows, or
 python3.12 -m venv venv
 ```
 for Mac.
+---
 
 Activate the virtual environment using the appropriate command for your operating system:
 
