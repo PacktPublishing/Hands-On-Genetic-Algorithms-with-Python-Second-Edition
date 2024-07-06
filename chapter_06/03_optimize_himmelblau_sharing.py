@@ -43,13 +43,13 @@ creator.create("Individual", list, fitness=creator.FitnessMax)
 # helper function for creating random float numbers uniformaly distributed within a given range [low, up]
 # it assumes that the range is the same for every dimension
 def randomFloat(low, up):
-    return [random.uniform(a, b) for a, b in zip([low] * DIMENSIONS, [up] * DIMENSIONS)]
+    return [random.uniform(l, u) for l, u in zip([low] * DIMENSIONS, [up] * DIMENSIONS)]
 
 # create an operator that randomly returns a float in the desired range and dimension:
-toolbox.register("attr_float", randomFloat, BOUND_LOW, BOUND_UP)
+toolbox.register("attrFloat", randomFloat, BOUND_LOW, BOUND_UP)
 
 # create the individual operator to fill up an Individual instance:
-toolbox.register("individualCreator", tools.initIterate, creator.Individual, toolbox.attr_float)
+toolbox.register("individualCreator", tools.initIterate, creator.Individual, toolbox.attrFloat)
 
 # create the population operator to generate a list of individuals:
 toolbox.register("populationCreator", tools.initRepeat, list, toolbox.individualCreator)
