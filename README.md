@@ -1,26 +1,35 @@
-# Hands-On-Genetic-Algorithms-with-Python-Second-Edition
-Hands-On Genetic Algorithms with Python, Second Edition, published by Packt
+# Hands-On Genetic Algorithms with Python, Second Edition.
 
 ## Installing Dependencies
 
 ### Prerequisites
-* The recommended Python version for this project is **3.11**.
+* The recommended Python version for this project is **3.12**. If you have a different version of Python installed, you can find this version [here] (https://www.python.org/downloads/release/python-3123/) and download the file that matches your operating system.
 * For Windows users, 
   * **Microsoft Visual C++ 14.0** or greater may be required. If prompted, follow the installation instructions available [here](https://www.scivision.dev/python-windows-visual-c-14-required).
   * Alternatively, you can set up a Linux environment on Windows using the Windows Subsystem for Linux (WSL), as detailed [here](https://learn.microsoft.com/en-us/windows/wsl/setup/environment).
 
 
 ### Virtual Environment
-
+#### Creation
 It is recommended to install the required dependencies within a **virtual environment**. To create one, follow these steps:
 ```bash
 cd path/to/repository
 python -m venv venv
 ```
+
+> **NOTE:** 
+If you have more than one version of Python installed in your system, you can specify the version to be used in the virual environment when creating it:
+> - **Windows:** `py -3.12 -m venv venv`
+> - **macOS and Linux:** `python3.12 -m venv venv`
+
+
+#### Activation
 Activate the virtual environment using the appropriate command for your operating system:
 
 - **Windows:** `venv\Scripts\activate`
 - **macOS and Linux:** `source venv/bin/activate`
+
+#### Installing dependencies
 
 After activation, install the dependencies with:
 ```bash
