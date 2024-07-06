@@ -31,7 +31,6 @@ creator.create("FitnessMax", base.Fitness, weights=(1.0,))
 
 # create the Individual class based on list:
 creator.create("Individual", list, fitness=creator.FitnessMax)
-#creator.create("Individual", array.array, typecode='b', fitness=creator.FitnessMax)
 
 # create the individual operator to fill up an Individual instance:
 toolbox.register("individualCreator", tools.initRepeat, creator.Individual, toolbox.zeroOrOne, ONE_MAX_LENGTH)
@@ -133,8 +132,9 @@ def main():
     plt.xlabel('Generation')
     plt.ylabel('Max / Average Fitness')
     plt.title('Max and Average Fitness over Generations')
+
     plt.show()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

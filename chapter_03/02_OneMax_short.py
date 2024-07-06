@@ -4,7 +4,6 @@ from deap import tools
 from deap import algorithms
 
 import random
-import numpy
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -49,7 +48,7 @@ def oneMaxFitness(individual):
 
 toolbox.register("evaluate", oneMaxFitness)
 
-# genetic operators:mutFlipBit
+# genetic operators:
 
 # Tournament selection with tournament size of 3:
 toolbox.register("select", tools.selTournament, tournsize=3)
