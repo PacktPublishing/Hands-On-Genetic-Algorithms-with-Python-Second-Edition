@@ -50,7 +50,7 @@ def oneMaxFitness(individual):
 
 toolbox.register("evaluate", oneMaxFitness)
 
-# genetic operators:mutFlipBit
+# genetic operators:
 
 # Tournament selection with tournament size of 3:
 toolbox.register("select", tools.selTournament, tournsize=3)
