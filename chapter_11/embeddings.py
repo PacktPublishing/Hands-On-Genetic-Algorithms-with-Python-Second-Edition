@@ -38,6 +38,7 @@ class Embeddings:
         print(f"Downloading model {self.model_name}...")
         model = api.load(self.model_name)
         print(f"Saving model to {model_path}...")
+        os.makedirs(os.path.dirname(model_path), exist_ok=True)
         model.save_word2vec_format(model_path, binary=True)
 
     def get_vector_size(self):

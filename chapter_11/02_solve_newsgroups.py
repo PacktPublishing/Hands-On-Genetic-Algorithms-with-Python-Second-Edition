@@ -18,7 +18,7 @@ RANDOM_SEED = 42
 random.seed(RANDOM_SEED)
 
 # create the desired traveling salesman problem instace:
-SUBSET_SIZE = 100  # number of features
+SUBSET_SIZE = 100  #10  # number of features
 ngc = NewsgroupClassifier(RANDOM_SEED)
 
 # Genetic Algorithm constants:
