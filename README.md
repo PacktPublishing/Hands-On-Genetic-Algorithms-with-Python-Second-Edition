@@ -42,7 +42,7 @@ With the following software and hardware list you can run all code files present
 
 | Chapter  | Software required                                                                    | OS required                        |
 | -------- | -------------------------------------------------------------------------------------| -----------------------------------|
-|  	1-16	   | Python 3.11 | Windows (for the VBA parts), macOS, or Linux (for all content excluding VBA) 		|
+|  	1-16	   | Python 3.11 | Windows, macOS, or Linux		|
 |  	1-16	   | DEAP 1.4.1 | |
 |  	1-16	   | Various Python libraries | |
 |  	1-16	   | Amazon Web Services (Chapter 14) | |
