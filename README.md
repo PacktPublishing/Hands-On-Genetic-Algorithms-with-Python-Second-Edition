@@ -52,7 +52,7 @@ With the following software and hardware list you can run all code files present
   
 * Unlocking the Secrets of Prompt Engineering  [[Packt]](https://www.packtpub.com/en-in/product/unlocking-the-secrets-of-prompt-engineering-9781835083833) [[Amazon]](https://www.amazon.com/Unlocking-Secrets-Prompt-Engineering-generation/dp/1835083838/ref=sr_1_1?sr=8-1)
   
-## Get to Know the Authors
+## Get to Know the Author
 **Eyal Wirsansky** is a senior data scientist, an experienced software engineer, a technology community leader, and an artificial intelligence researcher.
 Eyal began his software engineering career over twenty-five years ago as a pioneer in the field of Voice over IP. He currently works as a member of the data platform team at Gradle, Inc.
 During his graduate studies, he focused his research on genetic algorithms and neural networks. A notable result of this research is a novel supervised machine learning algorithm that integrates both approaches.
