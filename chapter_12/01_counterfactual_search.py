@@ -54,7 +54,7 @@ applicant = credit_data.get_applicant(25)
 # extract the original values of the four attributes:
 applicant_values = applicant.get_values()
 
-# calculate the cost of the new attribute values based on their differences from the origfiinal ones:
+# calculate the cost of the new attribute values based on their differences from the original ones:
 def get_cost(individual):
     cost = sum([abs(int(individual[i]) - applicant_values[i])/ranges[i] for i in range(NUM_OF_PARAMS)])
 
