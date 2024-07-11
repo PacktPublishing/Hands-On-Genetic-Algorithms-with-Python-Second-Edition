@@ -68,6 +68,9 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 
+# zappa stuff:
+zappa*
+
 # Scrapy stuff:
 .scrapy
 
@@ -124,12 +127,12 @@ celerybeat.pid
 
 # Environments
 .env
-.venv
+.venv*
 env/
-venv/
+venv*/
 ENV/
 env.bak/
-venv.bak/
+venv*.bak/
 
 # Spyder project settings
 .spyderproject
