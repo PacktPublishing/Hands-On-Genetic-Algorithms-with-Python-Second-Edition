@@ -16,7 +16,7 @@ import multiprocessing
 
 # problem related constants
 POLYGON_SIZE = 3
-NUM_OF_POLYGONS = 20 # 15
+NUM_OF_POLYGONS = 15 # 20
 
 # calculate total number of params in chromosome:
 # For each polygon we have:
