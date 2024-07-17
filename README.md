@@ -42,7 +42,7 @@ With the following software and hardware list you can run all code files present
 
 | Chapter  | Software required                                                                    | OS required                        |
 | -------- | -------------------------------------------------------------------------------------| -----------------------------------|
-|  	1-16	   | Python 3.11 | Windows, macOS, or Linux		|
+|  	1-16	   | Python 3.12 (or 3.11) | Windows, macOS, or Linux		|
 |  	1-16	   | DEAP 1.4.1 | |
 |  	1-16	   | Various Python libraries | |
 |  	1-16	   | Amazon Web Services (Chapter 14) | |
@@ -62,7 +62,7 @@ In addition to his professional roles, Eyal serves as an adjunct professor at Ja
 ## Installing Dependencies
 
 ### Prerequisites
-* The recommended Python version for this project is **3.12**. If you have a different version of Python installed, you can find this version [here] (https://www.python.org/downloads/release/python-3123/) and download the file that matches your operating system.
+* The recommended Python version for this project is **3.12** (or 3.11). If you have a different version of Python installed, you can find this version [here] (https://www.python.org/downloads/release/python-3123/) and download the file that matches your operating system.
 * For Windows users, 
   * **Microsoft Visual C++ 14.0** or greater may be required. If prompted, follow the installation instructions available [here](https://www.scivision.dev/python-windows-visual-c-14-required).
   * Alternatively, you can set up a Linux environment on Windows using the Windows Subsystem for Linux (WSL), as detailed [here](https://learn.microsoft.com/en-us/windows/wsl/setup/environment).
