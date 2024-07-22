@@ -60,7 +60,7 @@ In addition to his professional roles, Eyal serves as an adjunct professor at Ja
 
 
 ## "Hands-On" Video Tutorials
-The following series of video tutorials explains and demonstrates the Python programs contained in this repository:
+The following is a series of video tutorials, that explain and demonstrate each of the Python programs contained in this repository:
 [Hands-On Genetic Algorithms Playlist](https://www.youtube.com/watch?v=-gEjcoca0eo&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj)
 
 ## Installing Dependencies
