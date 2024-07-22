@@ -60,10 +60,12 @@ In addition to his professional roles, Eyal serves as an adjunct professor at Ja
 
 
 ## "Hands-On" Video Tutorials
-The following series of video tutorials can help you understand and make the most of the programs contained in this repository:
+The following series of video tutorials explains and demonstrates the Python programs contained in this repository:
 [Hands-On Genetic Algorithms Playlist](https://www.youtube.com/watch?v=-gEjcoca0eo&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj)
 
 ## Installing Dependencies
+
+[Hands-On Video Tutorial](https://www.youtube.com/watch?v=F88X1W7xhng&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj&index=2)
 
 ### Prerequisites
 * The recommended Python version for this project is **3.12** (or 3.11). If you have a different version of Python installed, you can find this version [here] (https://www.python.org/downloads/release/python-3123/) and download the file that matches your operating system.
@@ -224,7 +226,7 @@ Experiment with image processing and create a reconstruction of the Mona Lisa wi
 ## Chapter 16: Other Evolutionary and Bio-Inspired Computation Techniques 
 Discover several new problem-solving and optimization techniques related to genetic algorithms.
 
-[Hands-On Video Tutorial](https://www.youtube.com/watch?v=XWIrVPE63Q8&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj&index=15)
+[Hands-On Video Tutorial](https://www.youtube.com/watch?v=tPj3A1ifxzM&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj&index=16)
 
 - `chapter_16/01_gp_even_parity.py`: Solve the *even parity* problem using **genetic programming**.
 - `chapter_16/02_gp_even_parity_reduced.py`: Simplify the *even parity* solution by adding a constraint.
