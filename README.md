@@ -101,8 +101,7 @@ pip install -r requirements.txt
 
 ## Chapter 3: Using the DEAP Framework
 Explore the 'OneMax' problem while introducing the basics of genetic algorithms using the DEAP framework.
-### Hands-On Video Tutorial:
-https://www.youtube.com/watch?v=Y8Fwwjqn4Mk&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj&index=3
+[Hands-On Video Tutorial](https://www.youtube.com/watch?v=Y8Fwwjqn4Mk&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj&index=3)
 
 - `chapter_03/01_OneMax_long.py`: Solve the OneMax problem from scratch.
 - `chapter_03/02_OneMax_short.py`: Solve the OneMax problem using the DEAP framework.
