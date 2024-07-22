@@ -59,6 +59,10 @@ During his graduate studies, he focused his research on genetic algorithms and n
 In addition to his professional roles, Eyal serves as an adjunct professor at Jacksonville University, where he teaches a class on artificial intelligence. He also leads both the Jacksonville, Florida Java User Group and the Artificial Intelligence for Enterprise virtual user group, and authors the developer-focused artificial intelligence blog, ai4java.
 
 
+## "Hands-On" Video Tutorials
+The following series of video tutorials can help you understand and make the most of the programs contained in this repository:
+[Hands-On Genetic Algorithms Playlist](https://www.youtube.com/watch?v=-gEjcoca0eo&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj)
+
 ## Installing Dependencies
 
 ### Prerequisites
@@ -97,6 +101,9 @@ pip install -r requirements.txt
 
 ## Chapter 3: Using the DEAP Framework
 Explore the 'OneMax' problem while introducing the basics of genetic algorithms using the DEAP framework.
+### Hands-On Video Tutorial:
+https://www.youtube.com/watch?v=Y8Fwwjqn4Mk&list=PLT2RSfUt4goqwml-im6HvVrOZ6MH2RZOj&index=3
+
 - `chapter_03/01_OneMax_long.py`: Solve the OneMax problem from scratch.
 - `chapter_03/02_OneMax_short.py`: Solve the OneMax problem using the DEAP framework.
 - `chapter_03/03_OneMax_short_hof.py`: Solve the OneMax problem while demonstrating the use of DEAP's Hall-of-Fame (HOF) feature.
